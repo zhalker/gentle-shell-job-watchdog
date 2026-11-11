@@ -50,22 +50,15 @@ The watchdog only trusts an attempt tag present in a **label the user (or model)
 
 ### Timeline
 
-```mermaid
-timeline
-    title Watchdog timeline (at most two attempts per chain)
-    section Attempt 1 — untagged, or explicitly [wd:id#1]
-        0 min : job starts; watchdog is silent
-        20 min : first check-in wakes the orchestrator
-        20-min cadence : check-in while the job keeps running
-        180 min : exactly ONE "stop it with job_stop now" instruction, then silence forever
-    section Attempt 2 — only when the relaunch labels itself [wd:<id>#2]
-        0 min : relaunch starts its own 180-minute clock
-        10 min : earlier first check-in (failures repeat quickly)
-        20-min cadence : check-in while the job keeps running
-        180 min : exactly ONE "stop it with job_stop now" instruction, then silence forever
-    section Chain closed
-        Attempt 2 ends : user notified; no attempt 3 exists, a tag claiming it is refused immediately
-```
+At most two attempts per chain:
+
+| Moment | Attempt 1 — untagged, or explicitly `[wd:<id>#1]` | Attempt 2 — only when the relaunch labels itself `[wd:<id>#2]` |
+|---|---|---|
+| 0 min | job starts; watchdog is silent | relaunch starts its own 180-minute clock |
+| First check-in | 20 min | 10 min (failures repeat quickly) |
+| Cadence | check-in every 20 min while the job keeps running | check-in every 20 min while the job keeps running |
+| 180 min | exactly ONE "stop it with `job_stop` now" instruction, then silence forever | exactly ONE "stop it with `job_stop` now" instruction, then silence forever |
+| Chain closed | — | when attempt 2 ends the user is notified; no attempt 3 exists, a tag claiming it is refused immediately |
 
 ## Limitations and accepted risks
 
