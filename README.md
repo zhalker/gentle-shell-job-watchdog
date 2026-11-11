@@ -133,9 +133,9 @@ npm test
 
 ## Release history
 
-- **v0.1.0**: first public release. Source package for [gentle-shell#3086](https://github.com/Gentleman-Programming/gentle-shell/issues/3086), MIT licensed, published to npm and tagged on GitHub so `pi install` pins it.
+- **v0.1.0**: first public release. Source package for [gentle-shell#3086](https://github.com/Gentleman-Programming/gentle-shell/issues/3086), MIT licensed, published to npm as [`@zhalker/gentle-shell-job-watchdog`](https://www.npmjs.com/package/@zhalker/gentle-shell-job-watchdog) and tagged on GitHub so `pi install` pins it.
 
-Install with `pi install git:github.com/zhalker/gentle-shell-job-watchdog@v0.1.0` or the manual copy described above, and restart the session.
+Install with `pi install git:github.com/zhalker/gentle-shell-job-watchdog@v0.1.0`, or `pi install npm:@zhalker/gentle-shell-job-watchdog` once published to npm, or the manual copy described above — and restart the session.
 
 ## License
 
