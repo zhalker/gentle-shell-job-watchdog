@@ -1,0 +1,31 @@
+{
+	"name": "gentle-shell-job-watchdog",
+	"version": "0.1.0",
+	"description": "Gentle Shell (Pi) extension that wakes an idle orchestrator while a background job keeps running: check-ins every 20 minutes and exactly one job_stop instruction at 180 minutes (issue #3086).",
+	"license": "MIT",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi-extension",
+		"gentle-shell",
+		"background-jobs",
+		"watchdog"
+	],
+	"engines": {
+		"node": ">=22.18.0"
+	},
+	"scripts": {
+		"test": "node --test tests/extension-watchdog.test.ts"
+	},
+	"pi": {
+		"extensions": ["./extension/index.ts"]
+	},
+	"author": "zhalker",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zhalker/gentle-shell-job-watchdog.git"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
+	}
+}
